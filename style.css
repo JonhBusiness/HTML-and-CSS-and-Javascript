@@ -1,0 +1,235 @@
+/*Google Fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* scroll-padding-top: 2rem;
+scroll-behavior: smooth;  */
+  list-style: none;
+  text-decoration: none;
+}
+:root {
+  --main-color: red;
+  --text-color: black;
+  --bg-color: white;
+  --pointer-color: blue;
+}
+img {
+  width: 100%;
+}
+body {
+  color: var(--text-color);
+}
+.container {
+  max-width: 1068px;
+  margin: auto;
+  width: 100%;
+}
+/* Header*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--bg-color);
+  /* box-shadow: 0px 1px 4px hsl(0%, 4%, 15%/10%); */
+  filter: drop-shadow(0px 1px 4px rgb(201, 195, 195));
+  /* box-shadow: 5px 5px 10px rgb(133, 34, 34); */
+  z-index: 100; /* si un elemento tiene un z-index de 100, se colocará encima de un elemento con un z-index de 99. Si varios elementos tienen el mismo z-index, el orden de superposición se determina por el orden en que aparecen en el código HTML*/
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+.logo {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 400;
+}
+#cart-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+section {
+  padding: 4rem 0 3rem;
+}
+.cart {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 360px;
+  min-height: 100vh;
+  padding: 20px;
+  background: var(--bg-color);
+  box-shadow: -2px 0 4px rgb(88, 85, 85);
+  transition: 0.3s;
+}
+.cart.active {
+  right: 0;
+}
+.cart-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+.cart-box {
+  display: grid;
+  grid-template-columns: 32% 50% 18%; /*Así, en este caso, la primera columna tendrá un 32% del ancho total del grid, la segunda columna tendrá un 50% del ancho total del grid, y la tercera columna tendrá un 18% del ancho total del grid.*/
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain; /*El valor contain indica que la imagen debe ajustarse de tal manera que se vea completa dentro del contenedor, manteniendo las proporciones originales de la imagen. Esto significa que puede haber áreas vacías en los bordes del contenedor, si las proporciones del contenedor y la imagen son diferentes. El objeto será escalado hasta que todas sus partes esten visibles pero sin distorsionar las proporciones.*/
+  padding: 10px;
+}
+/* .details-box{
+    display: grid;
+    row-gap: 0.5rem;
+} */
+.cart-product-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.cart-price {
+  font-weight: 500;
+}
+.cart-quantity {
+  border: 1px solid var(--text-color);
+  outline-color: var(
+    --main-color
+  ); /*El borde resaltado es un borde adicional alrededor del borde del elemento, y se diferencia del borde (border) en que no ocupa espacio en la página y no afecta al tamaño del elemento.*/
+  width: 2.4rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.cart-remove {
+  font-size: 24px;
+  color: var(--main-color);
+  cursor: pointer;
+}
+.total {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--text-color);
+}
+.total-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.total-price {
+  margin-left: 1rem;
+}
+.btn-buy {
+  display: flex;
+  margin: 1.5rem auto 0 auto; /* una margen derecha y una margen izquierda de "auto" lo que significa que el navegador calculará automáticamente el espacio necesario para que el elemento esté centrado horizontalmente) y sin margen inferior.*/
+  padding: 12px 20px;
+  border: none;
+  background: var(--text-color);
+  color: var(--bg-color);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.btn-buy:hover {
+  transform: scale(0.8);
+}
+#close-cart {
+  position: absolute;
+  top: 1rem;
+  right: 1.3rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.shop {
+  margin-top: 2rem;
+}
+/*SHOP CONTENT*/
+.shop-content {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, auto)
+  ); /*grid-template-columns es una propiedad CSS que se utiliza para definir la estructura de una cuadrícula (grid) en un elemento contenedor. El valor repeat(auto-fit, minmax(220px, auto)) indica que las columnas de la cuadrícula se deben repetir automáticamente y ajustar al tamaño del contenedor, con un tamaño mínimo de 220px y un tamaño máximo de "auto" (es decir, el tamaño de contenido de la columna). En resumen, esta propiedad permite crear una cuadrícula adaptable que se ajusta automáticamente al tamaño del contenedor y asegura que las columnas tengan al menos 220px de ancho.*/
+  gap: 1.5rem;
+}
+.product-box {
+  position: relative;
+  /* filter: drop-shadow(5px 10px 4px rgb(117, 98, 98)); */ /*ES SOMBRA EL CONTENEDOR Y CONTENIDO*/
+  /* box-shadow: 5px 5px 10px rgb(133, 34, 34);  */ /*ES SOMBRA DEL CONTENEDOR*/
+}
+
+.product-box:hover {
+  padding: 10px; /* para que al pasar el pointer se haga mas pequenyo*/
+  border: 1px solid var(--pointer-color);
+  transition: 0.4s;
+}
+/* .product-img{
+        width: 100%;
+        height: auto;
+        margin-bottom: 0.5rem;
+    } */
+.product-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.price {
+  font-weight: 500;
+}
+.add-cart {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* background: var(--text-color);
+        color:var(--bg-color) */
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease-in-out;
+}
+.add-cart:hover {
+  transform: scale(1.1);
+  border-radius: 50%;
+  box-shadow: 5px 5px 10px rgb(66, 63, 63);
+  animation: swing 1s ease;
+  animation-iteration-count: 1;
+}
+
+@keyframes swing {
+  15% {
+    transform: translateX(2.5px);
+  }
+  30% {
+    transform: translateX(-2.5px);
+  }
+  50% {
+    transform: translateX(1px);
+  }
+  65% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(0.5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
